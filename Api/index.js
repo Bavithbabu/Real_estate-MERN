@@ -1,17 +1,60 @@
+// import express from 'express';
+// import mongoose from 'mongoose';
+// import userRouter from '../Routes/user.route.js';
+// import dotenv from "dotenv";
+ 
+// dotenv.config();
+
+// mongoose.connect("mongodb+srv://dhass6455:dhass6455@cluster0.yf3ja.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(() =>{
+//     console.log("Connected to data base")
+// }).catch((err)=>{
+//     console.log("Error while connecting to database")
+// });
+
+// const app = express();
+
+// app.listen(3000,() =>{
+//     console.log("Server is running");
+// })
+ 
+
+// app.use("/api/user",userRouter);
+
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from "dotenv";
- 
+import userRouter from './Routes/user.route.js'; // Ensure the path is correct
+import dotenv from 'dotenv';
+import authRouter from './Routes/auth.route.js';
+
 dotenv.config();
 
-mongoose.connect("mongodb+srv://dhass6455:dhass6455@cluster0.yf3ja.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(() =>{
-    console.log("Connected to data base")
-}).catch((err)=>{
-    console.log("Error while connecting to database")
-});
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://dhass6455:dhass6455@cluster0.yf3ja.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .then(() => {
+    console.log("Connected to database");
+  })
+  .catch((err) => {
+    console.log("Error while connecting to database:", err);
+  });
 
 const app = express();
 
-app.listen(3000,() =>{
-    console.log("Server is running");
-})
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Routes
+app.use("/api/user", userRouter); // Use lowercase for route prefix
+app.use("/api/auth",au);
+
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

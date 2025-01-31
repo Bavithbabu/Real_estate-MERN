@@ -44,7 +44,9 @@ app.use(express.json());
 
 // Routes
 app.use("/api/user", userRouter); // Use lowercase for route prefix
-app.use("/api/auth",au);
+app.use("/api/auth",au
+  
+);
 
 
 // Error handling middleware

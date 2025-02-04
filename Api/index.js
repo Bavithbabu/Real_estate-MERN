@@ -44,19 +44,29 @@ app.use(express.json());
 
 // Routes
 app.use("/api/user", userRouter); // Use lowercase for route prefix
-app.use("/api/auth",au
-  
-);
+app.use("/api/auth",authRouter);
 
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send('Something broke!');
+// });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// // Start the server
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+
+app.use((err,req,res,next) =>{ 
+  
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'Internal Server Error';
+  return res.status(statusCode).json({
+    success:false,
+    statusCode,
+    message,
+  });
 });

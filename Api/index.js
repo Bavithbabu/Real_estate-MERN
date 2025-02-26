@@ -25,6 +25,7 @@ import mongoose from 'mongoose';
 import userRouter from './Routes/user.route.js'; // Ensure the path is correct
 import dotenv from 'dotenv';
 import authRouter from './Routes/auth.route.js';
+import cors from "cors";
 
 dotenv.config();
 
@@ -42,6 +43,8 @@ const app = express();
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+app.use(cors());
+
 // Routes
 app.use("/api/user", userRouter); // Use lowercase for route prefix
 app.use("/api/auth",authRouter);
@@ -53,11 +56,11 @@ app.use("/api/auth",authRouter);
 //   res.status(500).send('Something broke!');
 // });
 
-// // Start the server
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 
 app.use((err,req,res,next) =>{ 

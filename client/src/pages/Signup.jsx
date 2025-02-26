@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter,Routes,Route} from 'react-router-dom'
-import { Link } from 'react-router-dom';
+import { BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
+import { Link,Navigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { signInStart,signInFailure,signInSuccess } from '../redux/User/userSilce';
    
 
 // onchange={handleChange}
@@ -9,6 +11,8 @@ function Signup() {
   const [formData,setFormData] = useState({})
   const [error,seterror] = useState(null);
   const [loading,setLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const []
   const handleChange = (e)=>{
     setFormData({
@@ -18,9 +22,9 @@ function Signup() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    dispatch(signInStart());
     try {
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +78,7 @@ function Signup() {
       </form>
     <div className='flex justify-center items-center  gap-2 mt-5'>
       <p>Have an account?</p>
-      <Link path={'/sign-in'}>
+      <Link to="/Signin">
         <span className='text-blue-700 hover:underline'>Sign in</span>
       </Link>
     </div>

@@ -18,17 +18,19 @@ function Header() {
                 className='bg-transparent focus:outline-none w-24 sm:w-48'/>
                 <FaSearch  className='text-slate-600' />
             </form>
-            <ul className='flex justify-between gap-3 text-slate-700
-                        '>
+            <ul className='flex justify-between gap-3 text-slate-700'>
                 <Link to="/Home">
                 <li className='hidden sm:inline text-slate-700 
                 hover:underline delay-75'>Home</li></Link>
                 <Link to="/About">
                 <li className='hidden sm:inline text-slate-700 
                 hover:underline delay-75'>About</li></Link>
-                <Link to="/Sign-in">
+                <Link to="/Signup">
                 <li className='hidden sm:inline text-slate-700 
-                hover:underline delay-75'>Sign-in</li></Link>
+                hover:underline delay-75'>Sign-up</li></Link>
+                <Link to="/Signin"> 
+                <li className='hidden sm:inline text-slate-700 
+                hover:underline delay-75'>Login</li></Link>
             </ul>
         </div>
      </header>

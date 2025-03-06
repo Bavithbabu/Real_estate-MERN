@@ -3,8 +3,7 @@ import { BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
 import { Link,Navigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signInStart,signInFailure,signInSuccess } from '../redux/User/userSilce';
-// import OAuth from '../Components/OAuth.jsx';
-import OAuth from "../Components/OAuth"
+import OAuth from "../Components/oAuth.jsx"
 // onchange={handleChange}
 
 function Signup() {
@@ -24,14 +23,14 @@ function Signup() {
     e.preventDefault();
     dispatch(signInStart());
     try {
-      const res = await fetch('http://localhost:3000/Api/auth/signup', {
+      const res = await fetch('http://localhost:3000/api/auth/signup', { // Corrected URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        
       });
-  
       const data = await res.json();
   
       if (!res.ok) {

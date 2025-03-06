@@ -3,8 +3,8 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import { Link,useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signInFailure, signInSuccess,signInStart } from '../redux/User/userSilce';
-import OAuth from '../Components/OAuth';
-
+import OAuth from '../Components/oAuth.jsx';
+// import OAuth from '../Components/oAuth';
 
 
 function Signin() {

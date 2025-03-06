@@ -9,6 +9,7 @@ import Header from './Components/Header';
 import {signInSuccess} from './redux/User/userSilce';
 
 import {useDispatch,useSelector} from 'react-redux';
+import PrivateRouter from './Components/PrivateRouter';
 
 // import Signin from './pages/Signin';
 
@@ -28,7 +29,8 @@ function App() {
       <Route path="/Signin" element={currentUser ? <Home />:<Signin />}/>
       <Route path="/Signup" element={<Signup />}/>
       <Route path="/Home" element={<Home />} />
-      <Route path="/Profile" element={<Profile />}/>
+      <Route element={PrivateRouter}>
+      <Route path="/Profile" element={<Profile />}/></Route>
       <Route path="/About" element={<About />}/>
       {/* <Route path="/Signin" element={<Signin />} />  */}
     </Routes>

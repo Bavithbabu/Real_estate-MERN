@@ -19,16 +19,16 @@
  
 
 // app.use("/api/user",userRouter);
-
+ // filepath: /c:/Users/dhass/Desktop/Desktop/Real estate/Api/index.js
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cors from "cors";
+import cors from 'cors';
 
 import userRouter from './Routes/user.route.js'; // Ensure the path is correct
 import authRouter from './Routes/auth.route.js';
 
-dotenv.config();
+dotenv.config(); // Load environment variables
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://dhass6455:dhass6455@cluster0.yf3ja.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -44,27 +44,20 @@ const app = express();
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// app.use(cors());
-
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from frontend
+  origin: 'http://localhost:5173', // Allow requests from frontend
   credentials: true,
 }));
 
-
 // Routes
 app.use("/api/user", userRouter); // Use lowercase for route prefix
-app.use("/api/auth",authRouter);
+app.use("/api/auth", authRouter);
 
-
-
-
-app.use((err,req,res,next) =>{ 
-  
+app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal Server Error';
   return res.status(statusCode).json({
-    success:false,
+    success: false,
     statusCode,
     message,
   });

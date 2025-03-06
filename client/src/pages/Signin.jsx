@@ -3,6 +3,10 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import { Link,useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signInFailure, signInSuccess,signInStart } from '../redux/User/userSilce';
+import OAuth from '../Components/OAuth';
+
+
+
 function Signin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -69,6 +73,7 @@ function Signin() {
         />
         <button disabled={loading} className='bg-slate-700 text-white p-3
         rounded-lg uppercase hover:oupacity-95 disabled:80'>{ loading?'Loading..':'Sign-in' }</button>
+        <OAuth />
       </form>
       <div className='flex justify-center items-center gap-2 mt-5'>
         <p>Dont have an account?</p>

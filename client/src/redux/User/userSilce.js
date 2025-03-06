@@ -144,16 +144,16 @@ const userSlice = createSlice({
 // Export actions
 export const {
   signInStart,
-  signInSuccess, // ✅ Fixed typo
+  signInSuccess, 
   signInFailure,
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
   deleteUserStart,
   deleteUserSuccess,
-  deleteUserFailure, // ✅ Fixed typo
+  deleteUserFailure,  
   signOutUserStart,
-  signOutSuccess, // ✅ Fixed typo
+  signOutSuccess,  
   signOutFailure,
 } = userSlice.actions;
 

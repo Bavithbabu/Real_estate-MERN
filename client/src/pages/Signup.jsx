@@ -3,8 +3,8 @@ import { BrowserRouter,Routes,Route, useNavigate} from 'react-router-dom'
 import { Link,Navigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signInStart,signInFailure,signInSuccess } from '../redux/User/userSilce';
-   
-
+// import OAuth from '../Components/OAuth.jsx';
+import OAuth from "../Components/OAuth"
 // onchange={handleChange}
 
 function Signup() {
@@ -24,7 +24,7 @@ function Signup() {
     e.preventDefault();
     dispatch(signInStart());
     try {
-      const res = await fetch('http://localhost:3000/api/auth/signup', {
+      const res = await fetch('http://localhost:3000/Api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,6 +75,7 @@ function Signup() {
         />
         <button disabled={loading}className='bg-slate-700 text-white p-3
         rounded-lg uppercase hover:opacity-95 disabled:80'> { loading ? 'Loading..':'Sign-up'}</button>
+        <OAuth />
       </form>
     <div className='flex justify-center items-center  gap-2 mt-5'>
       <p>Have an account?</p>

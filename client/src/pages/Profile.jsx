@@ -3,7 +3,7 @@ import React from 'react';
 function Profile() {
   return (
     <div>
-      Profile
+      <h1 className='text-center  text=3xl font-semibold my-7'>Profile</h1>
     </div>
   );
 }

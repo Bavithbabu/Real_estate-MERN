@@ -46,7 +46,7 @@ import { useDispatch } from 'react-redux';
 import {signInSuccess} from "../redux/User/userSilce";
 import { useNavigate } from 'react-router-dom';
 
-export default function oAuth() {
+export default function OAuth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleGoogleClick = async () => {
@@ -56,7 +56,7 @@ export default function oAuth() {
 
       const result = await signInWithPopup(auth, provider);
       
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
       // const res = await fetch(`${API_URL}/api/auth/google`, { ... });
 
       const res = await fetch(`${API_URL}/api/auth/google`, {

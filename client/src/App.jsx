@@ -19,19 +19,19 @@ function App() {
   const { currentUser } = useSelector((state) => state.user); // Get state
   React.useEffect(() => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if (user) dispatch(signInsuccess(user));
+  if (user) dispatch(signInSuccess(user));
 }, [dispatch]);
   return (  
     <BrowserRouter>
     <Header/>
     <Routes>
       <Route  path="/" element={<Home />}/>
-      <Route path="/Signin" element={currentUser ? <Home />:<Signin />}/>
-      <Route path="/Signup" element={<Signup />}/>
-      <Route path="/Home" element={<Home />} />
-      <Route element={PrivateRouter}>
-      <Route path="/Profile" element={<Profile />}/></Route>
-      <Route path="/About" element={<About />}/>
+      <Route path="/signin" element={currentUser ? <Home />:<Signin />}/>
+      <Route path="/signup" element={<Signup />}/>
+      <Route path="/home" element={<Home />} />
+      <Route element={<PrivateRouter />}>
+      <Route path="/profile" element={<Profile />}/></Route>
+      <Route path="/about" element={<About />}/>
       {/* <Route path="/Signin" element={<Signin />} />  */}
     </Routes>
     </BrowserRouter>

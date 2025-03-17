@@ -3,7 +3,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import { Link,useNavigate } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signInFailure, signInSuccess,signInStart } from '../redux/User/userSilce';
-import OAuth from '../Components/oAuth.jsx';
+import OAuth from '../Components/OAuth.jsx';
 // import OAuth from '../Components/oAuth';
 
 
@@ -29,7 +29,7 @@ function Signin() {
       // setLoading(true);
       try{
           dispatch(signInStart());
-          const res = await fetch('http://localhost:3000/api/auth/signin',{
+          const res = await fetch('http://localhost:3001/api/auth/signin',{
             method :'POST',
             headers:{
               'Content-Type':"application/json",

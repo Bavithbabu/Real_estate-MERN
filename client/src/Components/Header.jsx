@@ -33,7 +33,6 @@ function Header() {
                     src={currentUser.avatar}
                     alt="provider"
                 />):( <li className='hidden sm:inline text-slate-700 '>Log In</li>)}
-
                </Link>
                 <Link to="/Signup">
                 <li className='hidden sm:inline text-slate-700 
